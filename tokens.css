@@ -1,0 +1,365 @@
+/* =====================================================================
+   Dom — design tokens (jedno źródło prawdy dla wyglądu)
+   Styl: Material 3 Expressive, paleta tonalna z ziarna #2f6f62 (zieleń morska).
+   Warstwy:  1) prymitywy (surowe wartości, palety tonalne)
+             2) role kolorów M3 + nazwy semantyczne — tu działa motyw jasny/ciemny
+             3) komponentowe (przycisk, karta, pigułka…)
+   Motyw: automatycznie wg systemu albo wymuszony przez <html data-theme="light|dark">.
+   Zasada: styles.css używa tylko warstwy 2 i 3.
+   ===================================================================== */
+
+/* ---------- font: Roboto Flex (SIL OFL 1.1), zmienna grubość, lokalnie ---------- */
+@font-face {
+  font-family: 'Roboto Flex';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 100 1000;
+  src: url(roboto-flex-latin-ext.woff2) format('woff2-variations');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+@font-face {
+  font-family: 'Roboto Flex';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 100 1000;
+  src: url(roboto-flex-latin.woff2) format('woff2-variations');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+/* ---------- 1. PRYMITYWY ---------- */
+:root {
+  /* paleta tonalna: primary (zieleń morska) */
+  --p-10: #00201a; --p-20: #00382e; --p-30: #005144; --p-40: #1f6b5c; --p-80: #8cd5c3; --p-90: #a8f0de;
+  /* secondary (szarozielony) */
+  --s-10: #062019; --s-30: #344c45; --s-40: #4a635c; --s-80: #b1ccc4; --s-90: #cde8e0;
+  /* tertiary (chłodny niebieski) */
+  --t-10: #001e2f; --t-30: #224a62; --t-90: #c8e6ff;
+  /* neutralne (tony powierzchni) */
+  --n-4: #0a0f0e; --n-6: #0f1513; --n-10: #171d1b; --n-12: #1b211f; --n-17: #252b29; --n-20: #2c3230; --n-22: #303634;
+  --n-87: #d6dcd9; --n-90: #dee4e1; --n-92: #e3eae6; --n-94: #e9efec; --n-95: #ecf2ef; --n-96: #eff5f2; --n-98: #f5fbf8; --n-100: #ffffff;
+  /* neutral-variant (obrysy, tekst pomocniczy) */
+  --nv-30: #3f4946; --nv-50: #6f7976; --nv-60: #899390; --nv-80: #bec9c5;
+  /* błąd */
+  --e-10: #410002; --e-30: #93000a; --e-40: #ba1a1a; --e-80: #ffb4ab; --e-90: #ffdad6;
+  /* ostrzeżenie (bursztyn) */
+  --w-10: #261a00; --w-30: #5c4300; --w-40: #7a5900; --w-80: #f0c048; --w-90: #ffdea1;
+  /* sukces (zieleń) */
+  --g-40: #1e6c3b; --g-80: #8ad6a0;
+  --black: #000000;
+
+  /* wykresy (kategorie w raporcie) — czytelne w obu motywach */
+  --coral-500: #d9694f; --sea-500: #2f8f7a; --gold-500: #e0a23a; --blue-500: #5b7fd1;
+  --violet-500: #9a6bc9; --pink-500: #c75b8f; --olive-500: #6e9e3a; --slate-500: #7d8a86;
+  --teal-500: #1fa083; --teal-600: #0e8a70; --orange-500: #d07a22; --orange-600: #c26a12;
+
+  /* odstępy — siatka 4 px */
+  --space-1: 4px; --space-2: 8px; --space-3: 12px; --space-4: 16px; --space-5: 20px; --space-6: 24px;
+
+  /* kształty — skala M3 Expressive, 10 stopni (pogrubione = nowe w Expressive) */
+  --radius-none: 0;
+  --radius-xs: 4px;              /* extra small */
+  --radius-sm: 8px;              /* small */
+  --radius-md: 12px;             /* medium */
+  --radius-lg: 16px;             /* large */
+  --radius-lg-increased: 20px;   /* large increased */
+  --radius-xl: 28px;             /* extra large */
+  --radius-xl-increased: 32px;   /* extra large increased */
+  --radius-2xl: 48px;            /* extra extra large */
+  --radius-full: 999px;          /* full */
+
+  /* typografia */
+  --font-sans: 'Roboto Flex', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  --font-mono: ui-monospace, 'Roboto Mono', monospace;
+  --text-9: 9px; --text-10: 10px; --text-11: 11px; --text-12: 12px; --text-13: 13px; --text-14: 14px; --text-15: 15px;
+  --text-16: 16px; --text-17: 17px; --text-18: 18px; --text-20: 20px; --text-22: 22px; --text-24: 24px; --text-28: 28px;
+  --text-32: 32px; --text-40: 40px; --text-45: 45px;
+  --weight-regular: 400; --weight-medium: 500; --weight-semibold: 600; --weight-bold: 700; --weight-heavy: 800;
+  --leading-body: 1.5;
+
+  /* role typografii M3 (rozmiar / interlinia, grubość; tracking osobno, w em = sp / rozmiar)
+     „-emph” = zestaw emphasized z M3 Expressive: ten sam rozmiar, większa grubość */
+  --type-display-medium-emph: var(--weight-medium) 45px/52px var(--font-sans);
+  --type-display-small-emph: var(--weight-medium) 36px/44px var(--font-sans);
+  --type-headline-medium-emph: var(--weight-medium) 28px/36px var(--font-sans);
+  --type-headline-small-emph: var(--weight-medium) 24px/32px var(--font-sans);
+  --type-title-large-emph: var(--weight-medium) 22px/28px var(--font-sans);
+  --type-title-medium: var(--weight-medium) 16px/24px var(--font-sans);        --tracking-title-medium: .0125em;
+  --type-title-medium-emph: var(--weight-bold) 16px/24px var(--font-sans);     --tracking-title-medium-emph: .0094em;
+  --type-title-small-emph: var(--weight-bold) 14px/20px var(--font-sans);      --tracking-title-small: .0071em;
+  --type-body-large: var(--weight-regular) 16px/24px var(--font-sans);         --tracking-body-large: .0313em;
+  --type-body-medium: var(--weight-regular) 14px/20px var(--font-sans);        --tracking-body-medium: .0143em;
+  --type-body-small: var(--weight-regular) 12px/16px var(--font-sans);         --tracking-body-small: .0333em;
+  --type-label-large: var(--weight-medium) 14px/20px var(--font-sans);         --tracking-label-large: .0071em;
+  --type-label-large-emph: var(--weight-bold) 14px/20px var(--font-sans);
+  --type-label-medium: var(--weight-medium) 12px/16px var(--font-sans);        --tracking-label-medium: .0417em;
+  --type-label-medium-emph: var(--weight-bold) 12px/16px var(--font-sans);
+  --type-label-small: var(--weight-medium) 11px/16px var(--font-sans);         --tracking-label-small: .0455em;
+
+  /* cienie (poziomy uniesienia M3: 1 = 1dp, 2 = 3dp, 3 = 6dp) */
+  --shadow-1: 0 1px 2px rgb(0 0 0 / .12), 0 1px 3px 1px rgb(0 0 0 / .06);
+  --shadow-2: 0 1px 2px rgb(0 0 0 / .14), 0 2px 6px 2px rgb(0 0 0 / .08);
+  --shadow-3: 0 4px 8px 3px rgb(0 0 0 / .1), 0 1px 3px rgb(0 0 0 / .14);
+
+  /* ruch: sprężyny M3 Expressive — oficjalne odpowiedniki web (cubic-bezier + czas)
+     spatial (ruch, rozmiar, kształt) odbija; effects (kolor, przezroczystość) nigdy */
+  --duration-press: 150ms;
+  --duration-base: 200ms;
+  --ease-out: cubic-bezier(.2, 0, 0, 1);                        /* M3 standard */
+  --spring-fast: 350ms cubic-bezier(.42, 1.67, .21, .9);        /* expressive fast spatial */
+  --spring-default: 500ms cubic-bezier(.38, 1.21, .22, 1);      /* expressive default spatial */
+  --spring-slow: 650ms cubic-bezier(.39, 1.29, .35, .98);       /* expressive slow spatial */
+  --effects-fast: 150ms cubic-bezier(.31, .94, .34, 1);         /* expressive fast effects */
+  --effects-default: 200ms cubic-bezier(.34, .8, .34, 1);       /* expressive default effects */
+
+  /* ikony */
+  --icon-sm: 18px; --icon-md: 24px; --icon-stroke: 2;
+
+  /* minimalny obszar dotyku */
+  --touch-min: 44px;
+}
+
+/* ---------- 2. ROLE KOLORÓW — jasny ---------- */
+:root {
+  color-scheme: light;
+  --md-primary: var(--p-40);           --md-on-primary: var(--n-100);
+  --md-primary-container: var(--p-90); --md-on-primary-container: var(--p-10);
+  --md-secondary: var(--s-40);
+  --md-secondary-container: var(--s-90); --md-on-secondary-container: var(--s-10);
+  --md-tertiary-container: var(--t-90);  --md-on-tertiary-container: var(--t-10);
+  --md-error: var(--e-40);             --md-on-error: var(--n-100);
+  --md-error-container: var(--e-90);   --md-on-error-container: var(--e-10);
+  --md-surface: var(--n-98);
+  --md-surface-container-lowest: var(--n-100);
+  --md-surface-container-low: var(--n-96);
+  --md-surface-container: var(--n-94);
+  --md-surface-container-high: var(--n-92);
+  --md-surface-container-highest: var(--n-90);
+  --md-on-surface: var(--n-10);        --md-on-surface-variant: var(--nv-30);
+  --md-outline: var(--nv-50);          --md-outline-variant: var(--nv-80);
+  --md-inverse-surface: var(--n-20);   --md-inverse-on-surface: var(--n-95); --md-inverse-primary: var(--p-80);
+  --md-warning: var(--w-40);           --md-warning-container: var(--w-90); --md-on-warning-container: var(--w-10);
+  --md-success: var(--g-40);
+}
+
+/* ---------- 2. ROLE KOLORÓW — ciemny (system albo wymuszony) ---------- */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    color-scheme: dark;
+    --md-primary: var(--p-80);           --md-on-primary: var(--p-20);
+    --md-primary-container: var(--p-30); --md-on-primary-container: var(--p-90);
+    --md-secondary: var(--s-80);
+    --md-secondary-container: var(--s-30); --md-on-secondary-container: var(--s-90);
+    --md-tertiary-container: var(--t-30);  --md-on-tertiary-container: var(--t-90);
+    --md-error: var(--e-80);             --md-on-error: #690005;
+    --md-error-container: var(--e-30);   --md-on-error-container: var(--e-90);
+    --md-surface: var(--n-6);
+    --md-surface-container-lowest: var(--n-4);
+    --md-surface-container-low: var(--n-10);
+    --md-surface-container: var(--n-12);
+    --md-surface-container-high: var(--n-17);
+    --md-surface-container-highest: var(--n-22);
+    --md-on-surface: var(--n-90);        --md-on-surface-variant: var(--nv-80);
+    --md-outline: var(--nv-60);          --md-outline-variant: var(--nv-30);
+    --md-inverse-surface: var(--n-90);   --md-inverse-on-surface: var(--n-20); --md-inverse-primary: var(--p-40);
+    --md-warning: var(--w-80);           --md-warning-container: var(--w-30); --md-on-warning-container: var(--w-90);
+    --md-success: var(--g-80);
+  }
+}
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --md-primary: var(--p-80);           --md-on-primary: var(--p-20);
+  --md-primary-container: var(--p-30); --md-on-primary-container: var(--p-90);
+  --md-secondary: var(--s-80);
+  --md-secondary-container: var(--s-30); --md-on-secondary-container: var(--s-90);
+  --md-tertiary-container: var(--t-30);  --md-on-tertiary-container: var(--t-90);
+  --md-error: var(--e-80);             --md-on-error: #690005;
+  --md-error-container: var(--e-30);   --md-on-error-container: var(--e-90);
+  --md-surface: var(--n-6);
+  --md-surface-container-lowest: var(--n-4);
+  --md-surface-container-low: var(--n-10);
+  --md-surface-container: var(--n-12);
+  --md-surface-container-high: var(--n-17);
+  --md-surface-container-highest: var(--n-22);
+  --md-on-surface: var(--n-90);        --md-on-surface-variant: var(--nv-80);
+  --md-outline: var(--nv-60);          --md-outline-variant: var(--nv-30);
+  --md-inverse-surface: var(--n-90);   --md-inverse-on-surface: var(--n-20); --md-inverse-primary: var(--p-40);
+  --md-warning: var(--w-80);           --md-warning-container: var(--w-30); --md-on-warning-container: var(--w-90);
+  --md-success: var(--g-80);
+}
+
+/* ---------- 2b. NAZWY SEMANTYCZNE (używane w styles.css i modułach) ---------- */
+:root {
+  --color-bg: var(--md-surface);                         /* tło strony */
+  --color-surface: var(--md-surface-container);          /* karty */
+  --color-surface-alt: var(--md-surface-container-high); /* weekendy w grafiku, wciśnięcie */
+  --color-surface-high: var(--md-surface-container-highest);
+  --color-fg: var(--md-on-surface);
+  --color-muted: var(--md-on-surface-variant);
+  --color-border: var(--md-outline-variant);             /* linie podziału (dekoracyjne) */
+  --color-border-strong: var(--md-outline);              /* obrys kontrolek — min. 3:1 */
+  --color-focus: var(--md-primary);
+  --color-primary: var(--md-primary);
+  --color-on-primary: var(--md-on-primary);
+  --color-primary-container: var(--md-primary-container);
+  --color-on-primary-container: var(--md-on-primary-container);
+  --color-secondary: var(--md-secondary);
+  --color-secondary-container: var(--md-secondary-container);
+  --color-on-secondary-container: var(--md-on-secondary-container);
+  --color-tertiary-container: var(--md-tertiary-container);
+  --color-on-tertiary-container: var(--md-on-tertiary-container);
+  --color-success: var(--md-success);
+  --color-danger: var(--md-error);
+  --color-on-danger: var(--md-on-error);
+  --color-danger-container: var(--md-error-container);
+  --color-on-danger-container: var(--md-on-error-container);
+  --color-warning: var(--md-warning);
+  --color-warning-bg: var(--md-warning-container);
+  --color-on-warning-bg: var(--md-on-warning-container);
+  --color-scrim: var(--black);
+  --color-meter-1: var(--teal-600);
+  --color-meter-2: var(--orange-600);
+  --chart-1: var(--coral-500); --chart-2: var(--sea-500); --chart-3: var(--gold-500); --chart-4: var(--blue-500);
+  --chart-5: var(--violet-500); --chart-6: var(--pink-500); --chart-7: var(--olive-500); --chart-8: var(--slate-500);
+  /* warstwa stanu (hover/press) — kolor treści z przezroczystością */
+  --state-hover: 8%;    /* M3 HoverStateLayerOpacity 0.08 */
+  --state-press: 10%;   /* M3 PressedStateLayerOpacity 0.1 */
+  --state-focus: 10%;
+}
+
+/* ---------- 3. KOMPONENTOWE (wymiary z tokenów komponentów M3) ---------- */
+:root {
+  /* strona */
+  --page-max-width: 640px;
+  --page-gutter: var(--space-4);
+  --header-bg: var(--color-bg);
+
+  /* dolny pasek — Navigation bar (flexible): 64dp, wskaźnik 56×32 pełny, odstęp ikona–podpis 4dp */
+  --nav-height: 64px;
+  --nav-bg: var(--md-surface-container);
+  --nav-fg: var(--color-muted);
+  --nav-label-active: var(--color-secondary);
+  --nav-indicator: var(--color-secondary-container);
+  --nav-indicator-fg: var(--color-on-secondary-container);
+  --nav-indicator-w: 56px;
+  --nav-indicator-h: 32px;
+
+  /* karta — Filled card: róg medium 12dp, padding 16dp, odstęp między kartami ≤ 8dp, bez cienia */
+  --card-bg: var(--color-surface);
+  --card-radius: var(--radius-md);
+  --card-padding: var(--space-4);
+  --card-gap: var(--space-2);
+  --card-shadow: none;
+  /* karta główna (moment „hero”): decyzja projektowa — mieszanie kształtów dla napięcia */
+  --hero-radius: var(--radius-xl-increased) var(--radius-xl-increased) var(--radius-xl-increased) var(--radius-md);
+
+  /* lista segmentowana — List: grupa large 16dp, wpis extra small 4dp, odstęp 2dp, wciśnięty large */
+  --seg-radius: var(--radius-xs);
+  --seg-radius-end: var(--radius-lg);
+  --seg-radius-pressed: var(--radius-lg);
+  --seg-gap: 2px;
+  --list-item-min: 56px;
+  --list-pad-x: var(--space-4);
+  --list-pad-y: 10px;
+  --list-avatar: 40px;
+
+  /* przyciski — Small 40dp (boki 16dp, ikona 20dp, wciśnięty róg small 8dp),
+     Medium 56dp (boki 24dp, ikona 24dp, wciśnięty medium 12dp), XSmall 32dp */
+  --btn-height: 40px;
+  --btn-height-sm: 32px;
+  --btn-height-lg: 56px;
+  --btn-pad: var(--space-4);
+  --btn-pad-lg: var(--space-6);
+  --btn-radius: var(--radius-full);
+  --btn-radius-pressed: var(--radius-sm);
+  --btn-radius-pressed-lg: var(--radius-md);
+  --btn-icon: 20px;
+  --btn-icon-lg: 24px;
+  --btn-bg: var(--color-secondary-container);
+  --btn-fg: var(--color-on-secondary-container);
+  --btn-border: transparent;
+  --btn-press-bg: color-mix(in srgb, var(--btn-fg) var(--state-press), var(--btn-bg));
+  --btn-disabled-opacity: .38;
+  --btn-primary-bg: var(--color-primary);
+  --btn-primary-fg: var(--color-on-primary);
+  --btn-danger-fg: var(--color-danger);
+
+  /* Extended FAB (small): 56dp, róg large 16dp, boki 16dp, ikona 24dp, odstęp 8dp, kolor primary container, poziom 3 */
+  --fab-bg: var(--color-primary-container);
+  --fab-fg: var(--color-on-primary-container);
+  --fab-radius: var(--radius-lg);
+  --fab-height: 56px;
+  --fab-pad: var(--space-4);
+
+  /* pola — Outlined text field: 56dp, róg extra small 4dp, obrys 1dp → 2dp przy fokusie */
+  --input-height: 56px;
+  --input-radius: var(--radius-xs);
+  --input-bg: var(--color-bg);
+  --input-border: var(--color-border-strong);
+  --input-focus: var(--color-primary);
+  /* pole kwoty — Filled text field: surface container highest, róg extra small u góry, wskaźnik 1dp → 2dp */
+  --field-filled-bg: var(--color-surface-high);
+
+  /* chipy filtrów — Filter chip: 32dp, róg small 8dp, obrys 1dp (wybrany 0), ikona 18dp */
+  --pill-radius: var(--radius-sm);
+  --pill-bg: transparent;
+  --pill-fg: var(--color-muted);
+  --pill-active-bg: var(--color-secondary-container);
+  --pill-active-fg: var(--color-on-secondary-container);
+  --pill-height: 32px;
+  --pill-border: var(--color-border-strong);
+  --pill-gap: var(--space-2);
+
+  /* Connected button group (small): 40dp, odstęp 2dp, zewnętrzne rogi pełne, wewnętrzne 8dp,
+     wybrany: wewnętrzne rogi 50% (pigułka); szerokość sąsiadów się nie zmienia */
+  --group-height: 40px;
+  --group-bg: var(--md-surface-container-high);
+  --group-fg: var(--color-fg);
+  --group-on-bg: var(--color-primary);
+  --group-on-fg: var(--color-on-primary);
+  --group-inner-radius: var(--radius-sm);
+  --group-outer-radius: var(--radius-full);
+
+  /* fokus */
+  --focus-ring: 0 0 0 3px var(--color-focus);
+
+  /* plakietki — Badge large 16dp, pełna */
+  --badge-bg: var(--color-danger);
+  --badge-fg: var(--color-on-danger);
+
+  /* falowany pasek — Linear progress: grubość 4dp, amplituda 3dp, fala 40dp, wys. 10dp, przerwa 4dp, kropka 4dp */
+  --progress-track: var(--md-surface-container-highest);
+  --progress-ok: var(--color-primary);
+  --progress-warn: var(--color-warning);
+  --progress-over: var(--color-danger);
+
+  /* wpis na liście */
+  --row-padding-y: var(--space-3);
+  --row-padding-x: var(--space-4);
+  --row-divider: var(--color-border);
+
+  /* kod kreskowy karty — zawsze białe tło, żeby czytnik w kasie odczytał */
+  --code-bg: #ffffff;
+  --code-error: #ba1a1a;
+
+  /* snackbar: inverse surface, róg extra small 4dp, 48dp, poziom 3 */
+  --toast-bg: var(--md-inverse-surface);
+  --toast-fg: var(--md-inverse-on-surface);
+  --toast-radius: var(--radius-xs);
+  --toast-danger-bg: var(--md-inverse-surface);
+
+  /* aliasy dla starszego kodu (Liczniki, Grafik) — nie używaj w nowym */
+  --bg: var(--color-bg);
+  --card: var(--color-surface);
+  --fg: var(--color-fg);
+  --muted: var(--color-muted);
+  --line: var(--color-border);
+  --accent: var(--color-primary);
+  --accent-fg: var(--color-on-primary);
+  --pos: var(--color-success);
+  --neg: var(--color-danger);
+  --wait: var(--color-warning);
+  --warn-bg: var(--color-warning-bg);
+  --radius: var(--card-radius);
+  --c1: var(--color-meter-1);
+  --c2: var(--color-meter-2);
+}

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="robots" content="noindex">
+  <title>Wydatki wyjazdu</title>
+  <meta name="theme-color" content="#e9efec" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#1b211f" media="(prefers-color-scheme: dark)">
+  <script src="theme-boot.js"></script>
+  <link rel="preload" href="roboto-flex-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="icon" href="icon-192.png">
+  <link rel="stylesheet" href="tokens.css">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body class="public">
+  <header><h1 id="ttl">Wydatki wyjazdu</h1><span class="sync">podgląd</span></header>
+  <main id="view"><p class="muted center">Ładowanie…</p></main>
+  <div id="toast" class="toast"></div>
+  <script src="supabase.js"></script>
+  <script type="module" src="podglad.js"></script>
+</body>
+</html>

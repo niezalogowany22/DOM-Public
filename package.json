@@ -1,0 +1,8 @@
+{
+  "name": "dom",
+  "private": true,
+  "description": "Dom — PWA. Zależność potrzebna tylko funkcji api/push.js (powiadomienia).",
+  "dependencies": {
+    "web-push": "^3.6.7"
+  }
+}
